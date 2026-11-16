@@ -1,0 +1,1225 @@
+[
+ {
+  "name": "01-login",
+  "steps": [
+   {
+    "goto": "/login"
+   },
+   {
+    "wait": ".auth-card"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 600
+   },
+   {
+    "frame": "로그인 화면 — 사번·비밀번호"
+   },
+   {
+    "fill": [
+     "#lg-id",
+     "admin"
+    ]
+   },
+   {
+    "fill": [
+     "#lg-pw",
+     "wrong-pw"
+    ]
+   },
+   {
+    "click": "button[type=submit]"
+   },
+   {
+    "expect": "아이디 또는 비밀번호가 올바르지 않습니다."
+   },
+   {
+    "frame": "잘못된 비밀번호 → 카드 안 오류 표시"
+   },
+   {
+    "click": ".ac-foot a"
+   },
+   {
+    "wait": ".signup"
+   },
+   {
+    "frame": "회원가입 신청 (관리자 승인 후 로그인)"
+   },
+   {
+    "goto": "/login"
+   },
+   {
+    "wait": ".auth-card"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "fill": [
+     "#lg-id",
+     "admin"
+    ]
+   },
+   {
+    "fill": [
+     "#lg-pw",
+     "admin1234"
+    ]
+   },
+   {
+    "click": "button[type=submit]"
+   },
+   {
+    "wait": "input.otp"
+   },
+   {
+    "frame": "OTP 계정은 Google OTP 2차 인증"
+   }
+  ]
+ },
+ {
+  "name": "02-dashboard",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('대시보드')"
+   },
+   {
+    "wait": ".kpi"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "cursor": true
+   },
+   {
+    "frame": "대시보드 — KPI·호선 진척·도면 대기·인도 일정"
+   },
+   {
+    "mouseTo": [
+     ".hp >> nth=1"
+    ]
+   },
+   {
+    "wait": ".ctip"
+   },
+   {
+    "frame": "호선 행 호버 → 진척률 카드"
+   },
+   {
+    "mouseTo": [
+     ".donut",
+     -20
+    ]
+   },
+   {
+    "wait": ".donut.hov"
+   },
+   {
+    "frame": "공정 상태 도넛 구간 호버"
+   },
+   {
+    "mouseTo": [
+     ".stack >> nth=0 >> i >> nth=0"
+    ]
+   },
+   {
+    "wait": ".stack.hov"
+   },
+   {
+    "frame": "분야별 도면 스택 호버"
+   },
+   {
+    "mouseTo": [
+     ".dcol >> nth=0"
+    ]
+   },
+   {
+    "wait": ".deliv.hov"
+   },
+   {
+    "frame": "월별 인도 예정 호버"
+   },
+   {
+    "click": ".hp >> nth=0"
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "frame": "호선 클릭 → 해당 화면으로 이동"
+   }
+  ]
+ },
+ {
+  "name": "03-hulls",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('호선 목록')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".hull-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": ".yard .vwrap[data-state=ready]"
+   },
+   {
+    "wait": 2500
+   },
+   {
+    "frame": "호선 목록 + 아래 3D 조선소(Unity Web)"
+   },
+   {
+    "mouseTo": [
+     ".hull-table tbody tr:first-child td:nth-child(2)"
+    ]
+   },
+   {
+    "wait": ".hcard .pvt"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "호선 호버 → 미리보기 카드"
+   },
+   {
+    "mouseTo": [
+     ".yard .vwrap",
+     400
+    ]
+   },
+   {
+    "wait": ".vhover"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "3D 조선소 선박 호버 → 호선 카드"
+   },
+   {
+    "click": ".hull-table tbody tr:first-child .btn"
+   },
+   {
+    "wait": ".hull-info"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "호선 상세 — 기본정보"
+   },
+   {
+    "click": ".subtabs button:has-text('주요일정')"
+   },
+   {
+    "wait": "input[type=date]"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "주요일정 (착공·기공·진수·시운전·인도)"
+   },
+   {
+    "click": ".subtabs button:has-text('블록 구성')"
+   },
+   {
+    "wait": ".addrow"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "블록 구성 편집"
+   },
+   {
+    "click": ".subtabs button:has-text('연계 현황')"
+   },
+   {
+    "wait": ".sum"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "연계 현황 (공정·도면 집계)"
+   },
+   {
+    "click": ".subtabs button:has-text('3D 보기')"
+   },
+   {
+    "wait": ".vwrap[data-state=ready]"
+   },
+   {
+    "wait": 2500
+   },
+   {
+    "frame": "3D 보기 — 호선 디지털 트윈"
+   },
+   {
+    "mouseTo": [
+     ".vwrap",
+     549
+    ]
+   },
+   {
+    "wait": ".vhover"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "선체 호버 → 단계·진척률"
+   },
+   {
+    "click": ".vviews button:has-text('측면')"
+   },
+   {
+    "wait": 2200
+   },
+   {
+    "frame": "시점 전환 — 측면"
+   },
+   {
+    "click": ".vviews button:has-text('상단')"
+   },
+   {
+    "wait": 2200
+   },
+   {
+    "frame": "시점 전환 — 상단"
+   },
+   {
+    "click": ".vviews button:has-text('초기화')"
+   },
+   {
+    "wait": 2500
+   },
+   {
+    "frame": "초기화 → 처음 시점"
+   },
+   {
+    "press": [
+     "body",
+     "Escape"
+    ]
+   },
+   {
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "04-plan",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('공정 계획')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".bar"
+   },
+   {
+    "wait": 800
+   },
+   {
+    "cursor": true
+   },
+   {
+    "frame": "공정 계획 간트 — 오늘선·주말·공휴일 음영"
+   },
+   {
+    "mouseTo": [
+     ".bar[aria-label^='[201] 탑재']"
+    ]
+   },
+   {
+    "wait": ".hcard .pvt"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "공정 바 호버 → 카드 + 선후행 강조"
+   },
+   {
+    "click": ".bar[aria-label^='[201] 탑재']"
+   },
+   {
+    "wait": ".plan-panel .t tbody tr"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "공정 선택 → 우측 패널(선후행·연계 도면)"
+   },
+   {
+    "select": [
+     "select[aria-label=배율]",
+     "2.5"
+    ]
+   },
+   {
+    "wait": 800
+   },
+   {
+    "frame": "배율 축소 — 전체 기간 보기"
+   },
+   {
+    "select": [
+     "select[aria-label=배율]",
+     "6"
+    ]
+   },
+   {
+    "wait": 800
+   },
+   {
+    "click": ".plan-panel button:has-text('닫기')"
+   },
+   {
+    "hover": ".bar[aria-label^='[301] 도장']"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "드래그 전"
+   },
+   {
+    "drag": [
+     ".bar[aria-label^='[301] 도장']",
+     24
+    ]
+   },
+   {
+    "expect": "저장되었습니다"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "바 드래그 → 일정 저장, 후행 공정 연쇄 이동"
+   },
+   {
+    "select": [
+     "select[aria-label=호선]",
+     "8003"
+    ]
+   },
+   {
+    "wait": 800
+   },
+   {
+    "click": ".g-row:has(.bar[aria-label^='[101] 강재절단']) .g-label"
+   },
+   {
+    "wait": ".plan-panel .note"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "필수 도면 미배포 → 착수 대기 안내"
+   }
+  ]
+ },
+ {
+  "name": "05-progress",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('공정 실적')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".progress-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "공정 실적 목록"
+   },
+   {
+    "mouseTo": [
+     ".progress-table tbody tr:nth-child(2) td:nth-child(2)"
+    ]
+   },
+   {
+    "wait": ".hcard .pvt"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "행 호버 → 미리보기 카드"
+   },
+   {
+    "click": ".progress-table tbody tr:first-child"
+   },
+   {
+    "wait": ".prog-detail"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "공정 선택 → 일자별 실적 입력"
+   },
+   {
+    "fill": [
+     ".prog-detail input[type=number] >> nth=0",
+     "75"
+    ]
+   },
+   {
+    "click": "text=실적 저장"
+   },
+   {
+    "expect": "실적이 저장되었습니다."
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "누적 진척률 저장 → 상태 자동 반영"
+   }
+  ]
+ },
+ {
+  "name": "06-drawings",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('도면 목록')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".dwg-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "도면 목록 — 호선·분야·상태 필터"
+   },
+   {
+    "mouseTo": [
+     ".dwg-table tbody tr:first-child td:nth-child(5)"
+    ]
+   },
+   {
+    "wait": ".hcard .pvt"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "frame": "도면 호버 → PDF 미리보기 카드"
+   },
+   {
+    "fill": [
+     "input[aria-label=검색어]",
+     "8001-PIPE-501"
+    ]
+   },
+   {
+    "press": [
+     "input[aria-label=검색어]",
+     "Enter"
+    ]
+   },
+   {
+    "wait": ".dwg-table tbody tr:has-text('8001-PIPE-501')"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "press": [
+     ".dwg-table tbody tr:first-child .btn",
+     "Enter"
+    ]
+   },
+   {
+    "wait": ".dgrid .revs"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "frame": "도면 상세 — Rev 이력·결재선·PDF·공정 연계"
+   },
+   {
+    "press": [
+     "body",
+     "Escape"
+    ]
+   },
+   {
+    "wait": 500
+   },
+   {
+    "click": "text=+ 도면 등록"
+   },
+   {
+    "wait": ".dwg-info"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "신규 도면 등록 (Rev0 DRAFT)"
+   },
+   {
+    "press": [
+     "body",
+     "Escape"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "07-approvals",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('결재함')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".wait-table"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "결재함 — 내 대기 건·최근 처리"
+   },
+   {
+    "mouseTo": [
+     ".wait-table button:has-text('승인')"
+    ]
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "1단계 → 2단계 순차 결재"
+   },
+   {
+    "click": ".wait-table button:has-text('승인')"
+   },
+   {
+    "expect": "승인했습니다."
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "승인 처리"
+   }
+  ]
+ },
+ {
+  "name": "08-users",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('회원관리')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".user-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "회원관리 — 상태·그룹 필터, 가입 승인"
+   },
+   {
+    "click": ".user-table tbody tr:has-text('choi.qa')"
+   },
+   {
+    "wait": ".perm-table tbody tr"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "회원별 메뉴 권한 (그룹 권한보다 우선)"
+   },
+   {
+    "press": [
+     "button:has-text('신규')",
+     "Enter"
+    ]
+   },
+   {
+    "wait": ".user-form"
+   },
+   {
+    "wait": 300
+   },
+   {
+    "frame": "신규 회원 등록·OTP 설정"
+   }
+  ]
+ },
+ {
+  "name": "09-usage",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('사용 로그')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".usage .kpi"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 800
+   },
+   {
+    "frame": "사용 로그 — API 호출·사용자·화면 집계"
+   },
+   {
+    "select": [
+     "select[aria-label=기간]",
+     "30"
+    ]
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "frame": "기간 30일로 변경"
+   }
+  ]
+ },
+ {
+  "name": "10-inquiry",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('건의·문의')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": ".inq-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "건의·문의 게시판 — 상태별 건수"
+   },
+   {
+    "click": ".inq-table tbody tr:has-text('공정 계획 엑셀 내보내기 요청')"
+   },
+   {
+    "wait": ".proc"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "관리자 처리 — 완료/반려 + 답변"
+   }
+  ]
+ },
+ {
+  "name": "11-chatbot",
+  "account": "park.pm",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('대시보드')"
+   },
+   {
+    "wait": ".kpi"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "click": ".launcher"
+   },
+   {
+    "wait": ".cpanel"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "조선소 챗봇 — 빠른 질문 버튼"
+   },
+   {
+    "click": ".qb:has-text('호선 정보')"
+   },
+   {
+    "wait": ".ccard"
+   },
+   {
+    "mouseTo": [
+     ".ccard"
+    ]
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "호선 정보 → MCP 도구 결과 카드"
+   },
+   {
+    "fill": [
+     ".cin",
+     "도면 목록 보여줘"
+    ]
+   },
+   {
+    "press": [
+     ".cin",
+     "Enter"
+    ]
+   },
+   {
+    "expect": "상세 정보를 볼 도면을 선택해 주세요."
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "자연어 \"도면 목록 보여줘\" → 도면 도구"
+   }
+  ]
+ },
+ {
+  "name": "11b-chat-progress",
+  "account": "park.pm",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('대시보드')"
+   },
+   {
+    "wait": ".kpi"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "click": ".launcher"
+   },
+   {
+    "wait": ".cpanel"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "click": ".qb:has-text('공정 실적')"
+   },
+   {
+    "wait": ".ccard"
+   },
+   {
+    "click": ".ccard:has-text('8001')"
+   },
+   {
+    "expect": "8001호선의 공정을 선택해 주세요."
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "공정 실적 → 호선 → 공정 단계 선택"
+   },
+   {
+    "click": ".cards >> nth=1 >> .ccard >> nth=0"
+   },
+   {
+    "expect": "최근 작업일"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "frame": "공정 선택 → 최근 실적 요약"
+   }
+  ]
+ },
+ {
+  "name": "11c-chat-report",
+  "account": "park.pm",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('대시보드')"
+   },
+   {
+    "wait": ".kpi"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "click": ".launcher"
+   },
+   {
+    "wait": ".cpanel"
+   },
+   {
+    "wait": 400
+   },
+   {
+    "click": ".qb.rep"
+   },
+   {
+    "wait": ".rcard .pill:has-text('8001')"
+   },
+   {
+    "click": ".rcard .pill:has-text('8001')"
+   },
+   {
+    "click": ".rcard .go"
+   },
+   {
+    "wait": ".rcard .res"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "보고서 작성 → PDF·Excel 다운로드"
+   },
+   {
+    "click": ".qb:has-text('건의하기')"
+   },
+   {
+    "wait": ".fbar"
+   },
+   {
+    "fill": [
+     ".cin",
+     "간트 차트 인쇄 기능이 필요합니다"
+    ]
+   },
+   {
+    "press": [
+     ".cin",
+     "Enter"
+    ]
+   },
+   {
+    "expect": "접수했습니다. 접수번호 FB-"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "frame": "챗봇에서 건의 접수 → 게시판 등록"
+   },
+   {
+    "fill": [
+     ".cin",
+     "도면 사용법 알려줘"
+    ]
+   },
+   {
+    "press": [
+     ".cin",
+     "Enter"
+    ]
+   },
+   {
+    "wait": ".manual"
+   },
+   {
+    "wait": 700
+   },
+   {
+    "frame": "사용법 질문 → 업무 매뉴얼 열기"
+   }
+  ]
+ },
+ {
+  "name": "12-chat-llm",
+  "account": "park.pm",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "click": ".launcher"
+   },
+   {
+    "wait": ".cpanel"
+   },
+   {
+    "fill": [
+     ".cin",
+     "선박 블록이 뭐야? 짧게 설명해줘"
+    ]
+   },
+   {
+    "press": [
+     ".cin",
+     "Enter"
+    ]
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "frame": "일반 질문 → 로컬 LLM(Ollama)"
+   },
+   {
+    "wait": 15000
+   },
+   {
+    "frame": "Ollama qwen2.5 답변 (데이터 질문은 MCP만)"
+   }
+  ]
+ },
+ {
+  "name": "13-manual",
+  "account": "admin",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('공정 계획')"
+   },
+   {
+    "click": "button:has-text('다른 탭 닫기')"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "cursor": true
+   },
+   {
+    "click": ".tbtn:has-text('매뉴얼')"
+   },
+   {
+    "wait": ".manual .shot img"
+   },
+   {
+    "wait": 700
+   },
+   {
+    "frame": "업무 매뉴얼 — 현재 화면 단계부터"
+   },
+   {
+    "click": ".manual .steps .btn:has-text('호선·3D 조선소')"
+   },
+   {
+    "wait": 600
+   },
+   {
+    "frame": "단계 이동 (권한 없는 단계는 숨김)"
+   },
+   {
+    "click": ".mhd .btn:has-text('업무 화면 열기')"
+   },
+   {
+    "wait": ".hull-table"
+   },
+   {
+    "wait": 800
+   },
+   {
+    "wait": ".yard .vwrap[data-state=ready]"
+   },
+   {
+    "wait": 2500
+   },
+   {
+    "frame": "업무 화면 열기 → 해당 탭으로 이동"
+   }
+  ]
+ },
+ {
+  "name": "14-readonly",
+  "account": "choi.qa",
+  "steps": [
+   {
+    "goto": "/"
+   },
+   {
+    "wait": ".tabbar"
+   },
+   {
+    "click": ".menu .mi:has-text('호선 목록')"
+   },
+   {
+    "wait": ".hull-table tbody tr"
+   },
+   {
+    "cursor": true
+   },
+   {
+    "wait": ".hull-list .ro-badge"
+   },
+   {
+    "wait": 800
+   },
+   {
+    "wait": ".yard .vwrap[data-state=ready]"
+   },
+   {
+    "wait": 2500
+   },
+   {
+    "frame": "조회 전용 계정 — 등록 버튼 없음·배지 표시, 관리 메뉴 숨김"
+   },
+   {
+    "click": ".menu .mi:has-text('도면 목록')"
+   },
+   {
+    "wait": ".dwg-table tbody tr"
+   },
+   {
+    "click": ".dwg-table tbody tr:first-child .btn"
+   },
+   {
+    "wait": ".dgrid .revs"
+   },
+   {
+    "wait": 800
+   },
+   {
+    "frame": "도면 상세도 읽기 전용 (Rev 작성·연계 숨김)"
+   }
+  ]
+ }
+]

@@ -1,0 +1,91 @@
+{
+  "period": {
+    "start": "2026-11-14T06:16:38.340Z",
+    "end": "2026-11-14T08:37:06.733Z"
+  },
+  "sessions": [
+    {
+      "id": "04b71624",
+      "input_tokens": 52,
+      "output_tokens": 91276,
+      "cache_creation_input_tokens": 179211,
+      "cache_read_input_tokens": 3219246
+    },
+    {
+      "id": "30e359bc",
+      "input_tokens": 58,
+      "output_tokens": 73209,
+      "cache_creation_input_tokens": 203446,
+      "cache_read_input_tokens": 4055069
+    },
+    {
+      "id": "44668c62",
+      "input_tokens": 24,
+      "output_tokens": 103843,
+      "cache_creation_input_tokens": 169383,
+      "cache_read_input_tokens": 1347967
+    },
+    {
+      "id": "8657c82f",
+      "input_tokens": 52,
+      "output_tokens": 95012,
+      "cache_creation_input_tokens": 201683,
+      "cache_read_input_tokens": 3844675
+    },
+    {
+      "id": "a32f75a0",
+      "input_tokens": 76,
+      "output_tokens": 73200,
+      "cache_creation_input_tokens": 164619,
+      "cache_read_input_tokens": 4878054
+    },
+    {
+      "id": "ee2167d4",
+      "input_tokens": 66,
+      "output_tokens": 82645,
+      "cache_creation_input_tokens": 177325,
+      "cache_read_input_tokens": 4561943
+    },
+    {
+      "id": "f16852ff",
+      "input_tokens": 36,
+      "output_tokens": 12307,
+      "cache_creation_input_tokens": 64201,
+      "cache_read_input_tokens": 1090131
+    }
+  ],
+  "models": {
+    "claude-opus-5-5": 182
+  },
+  "total": {
+    "input_tokens": 364,
+    "output_tokens": 531492,
+    "cache_creation_input_tokens": 1159868,
+    "cache_read_input_tokens": 22997085,
+    "api_calls": 182,
+    "sum_all": 24688809
+  },
+  "prompts": [
+    {
+      "no": 1,
+      "time": "2026-11-14T08:30:13.806Z",
+      "session": "f16852ff",
+      "text": "<pasted_content id=\"9b8f\">\nVer4 프론트엔드의 호버 동작 두 가지를 수정해줘.\n\nfrontend/src/screens/Dashboard.vue의 호선별 진척률 바, 공정 상태 도넛, 분야별 도면 누적 바, 월별 인도 바에 호버 효과를 추가해줘. 마우스가 올라간 막대나 구간을 강조하고, 해당 항목 이름과 현재 값(진척률·건수 등)을 툴팁에 표시해줘. 벗어나면 강조와 툴팁을 해제하고, 기존 레이아웃과 호선 클릭 이동을 유지해줘.\n\nfrontend/src/components/ShipChat.vue에서 챗봇 패널이 닫혀 있을 때 배 아이콘이나 옆의 인사 말풍선에 마우스를 올리면 말풍선을 숨기고, 두 영역을 모두 벗어나면 다시 표시해줘. 숨겨진 뒤에도 말풍선이 있던 위치를 감지해서 커서가 그 자리에 머물 때 깜빡이지 않게 해줘. 아이콘 클릭, 채팅 패널 열기·닫기, Esc 동작은 유지해줘.\n\n먼저 위 두 Vue 파일만 읽어줘. 명세 확인이 필요하면 specs/F03.md의 차트 부분과 specs/F13.md의 런처 부분만 읽고, 테스트나 직접 연결된 코드는 필요한 경우에만 열어줘. 기존 데이터와 CSS를 활용하고 수정 범위는 두 기능에 한정해줘. /build와 서브에이전트는 사용하지 말고, 계획이나 중간 요약은 생략해줘.\n\n수정 후 scripts/verify.sh frontend frontend/tests/approval-dashboard.test.js frontend/tests/chat-manual.test.js로 관련 테스트를 실행해줘. 브라우저 확인은 프로젝트의 scripts/shots.mjs를 사용해 변경된 호버 동작 위주로 확인해줘. 마지막에는 변경 파일, 테스트 결과, 화면에서 실제로 확인한 항목과 미확인 항목만 짧게 알려줘.\n</pasted_content id=\"9b8f\">",
+      "tokens": {
+        "input_tokens": 36,
+        "output_tokens": 12307,
+        "cache_creation_input_tokens": 64201,
+        "cache_read_input_tokens": 1090131
+      },
+      "preview": "<pasted_content id=\"9b8f\"> Ver4 프론트엔드의 호버 동작 두 가지를 수정해줘. frontend/src/screens/Da"
+    }
+  ],
+  "skills": {},
+  "mcp": {},
+  "tools": {
+    "Bash": 153,
+    "Write": 127,
+    "Read": 116,
+    "Edit": 9
+  }
+}

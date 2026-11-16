@@ -1,0 +1,9 @@
+prepared_at=2026-11-14T16:04:57+0900
+path=/Users/hoon/Desktop/personal_project/shipyard-TokenOptimization-ver4
+specs_sha256=1d6cf786f717f798e5d63378463fcd614b078ebdac3b64e63a94df71d7a3c481
+reference_sha256=8335f38cf1c1e15ad61af975017a47b74104046ae9d7a648ea1978dd68f21c77
+claude_version=2.1.325 (Claude Code)
+launch_model=claude-opus-5-5 effort=medium permission=auto strict_mcp=True prompt=/build
+inputs: specs=21 files 124659 bytes, reference_png=42, manual_jpg=10, html_mockups=0
+plan: phases=6 tasks=30
+ports: backend=8100 frontend=5273

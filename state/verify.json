@@ -1,0 +1,33 @@
+{
+  "backend": {
+    "ok": true,
+    "ts": "2026-11-14T16:46:08+09:00",
+    "args": [],
+    "summary": "100 passed, 1 warning in 10.18s",
+    "log": "reports/logs/20261114-164557-backend.log"
+  },
+  "frontend": {
+    "ok": true,
+    "ts": "2026-11-14T17:31:06+09:00",
+    "args": [
+      "tests/approval-dashboard.test.js",
+      "tests/chat-manual.test.js"
+    ],
+    "summary": "Test Files  2 passed (2) | Tests  14 passed (14)",
+    "log": "reports/logs/20261114-173105-frontend.log"
+  },
+  "build": {
+    "ok": true,
+    "ts": "2026-11-14T16:46:12+09:00",
+    "args": [],
+    "summary": "",
+    "log": "reports/logs/20261114-164611-build.log"
+  },
+  "unity": {
+    "ok": true,
+    "ts": "2026-11-14T16:42:38+09:00",
+    "args": [],
+    "summary": "Build Finished, Result: Success. | Exiting batchmode successfully now!",
+    "log": "reports/logs/20261114-164209-unity.log"
+  }
+}

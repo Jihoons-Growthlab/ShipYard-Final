@@ -1,0 +1,13 @@
+-- F11 API 사용 로그
+CREATE TABLE TB_SYS_LogApi (
+  LogApiId INTEGER PRIMARY KEY AUTOINCREMENT,
+  EmpNo TEXT REFERENCES users (emp_no) ON DELETE SET NULL,
+  Method TEXT NOT NULL,
+  Path TEXT NOT NULL,
+  Status INTEGER NOT NULL,
+  DurationMs INTEGER NOT NULL,
+  CallDt TEXT NOT NULL,
+  DemoYN INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX ix_logapi_calldt ON TB_SYS_LogApi (CallDt);
+CREATE INDEX ix_logapi_emp_calldt ON TB_SYS_LogApi (EmpNo, CallDt);

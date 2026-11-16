@@ -1,0 +1,2362 @@
+{
+ "auth": {
+  "storage": "sessionStorage",
+  "key": "swp_token"
+ },
+ "flows": [
+  {
+   "name": "login",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "wait": ".auth-card"
+    }
+   ],
+   "ref": "login.png"
+  },
+  {
+   "name": "login-error",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "fill": [
+      "#lg-id",
+      "admin"
+     ]
+    },
+    {
+     "fill": [
+      "#lg-pw",
+      "wrong-pw"
+     ]
+    },
+    {
+     "click": "button[type=submit]"
+    },
+    {
+     "expect": "아이디 또는 비밀번호가 올바르지 않습니다."
+    }
+   ],
+   "ref": "login-error.png"
+  },
+  {
+   "name": "signup",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "click": ".ac-foot a"
+    },
+    {
+     "wait": ".signup"
+    }
+   ],
+   "ref": "signup.png"
+  },
+  {
+   "name": "otp",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "fill": [
+      "#lg-id",
+      "admin"
+     ]
+    },
+    {
+     "fill": [
+      "#lg-pw",
+      "admin1234"
+     ]
+    },
+    {
+     "click": "button[type=submit]"
+    },
+    {
+     "wait": "input.otp"
+    }
+   ],
+   "ref": "otp.png"
+  },
+  {
+   "name": "login-mobile",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "wait": ".auth-card"
+    }
+   ],
+   "ref": "login-mobile.png",
+   "viewport": [
+    390,
+    844
+   ]
+  },
+  {
+   "name": "hull-list",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "wait": 600
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-list.png"
+  },
+  {
+   "name": "hull-hover",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "hover": ".hull-table tbody tr:first-child td:nth-child(2)"
+    },
+    {
+     "wait": ".hcard .pvt"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-hover.png"
+  },
+  {
+   "name": "hull-info",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-info.png"
+  },
+  {
+   "name": "hull-milestones",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('주요일정')"
+    },
+    {
+     "wait": "input[type=date]"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-milestones.png"
+  },
+  {
+   "name": "hull-blocks",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('블록 구성')"
+    },
+    {
+     "wait": ".addrow"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-blocks.png"
+  },
+  {
+   "name": "hull-summary",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('연계 현황')"
+    },
+    {
+     "wait": ".sum"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-summary.png"
+  },
+  {
+   "name": "hull-new",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": "text=+ 호선 등록"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "account": "admin",
+   "ref": "hull-new.png"
+  },
+  {
+   "name": "plan-gantt",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-gantt.png"
+  },
+  {
+   "name": "plan-hover",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "hover": ".bar[aria-label^='[201] 탑재']"
+    },
+    {
+     "wait": ".hcard .pvt"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-hover.png"
+  },
+  {
+   "name": "plan-zoom",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "select": [
+      "select[aria-label=배율]",
+      "6"
+     ]
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-zoom.png"
+  },
+  {
+   "name": "plan-selected",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": ".bar[aria-label^='[201] 탑재']"
+    },
+    {
+     "wait": ".plan-panel .t tbody tr"
+    },
+    {
+     "wait": 500
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-selected.png"
+  },
+  {
+   "name": "plan-new",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": "text=+ 공정 추가"
+    },
+    {
+     "wait": ".plan-panel"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-new.png"
+  },
+  {
+   "name": "plan-drawing-wait",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "select": [
+      "select[aria-label=호선]",
+      "8003"
+     ]
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": ".g-row:has(.bar[aria-label^='[101] 강재절단']) .g-label"
+    },
+    {
+     "wait": ".plan-panel .note"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "plan-drawing-wait.png"
+  },
+  {
+   "name": "progress",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 실적')"
+    },
+    {
+     "wait": ".progress-table tbody tr"
+    },
+    {
+     "click": ".progress-table tbody tr:first-child"
+    },
+    {
+     "wait": ".prog-detail"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "progress.png"
+  },
+  {
+   "name": "progress-hover",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 실적')"
+    },
+    {
+     "wait": ".progress-table tbody tr"
+    },
+    {
+     "hover": ".progress-table tbody tr:nth-child(2) td:nth-child(2)"
+    },
+    {
+     "wait": ".hcard .pvt"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "account": "admin",
+   "ref": "progress-hover.png"
+  },
+  {
+   "name": "readonly-hull-list",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "wait": ".hull-list .ro-badge"
+    },
+    {
+     "expectNot": "+ 호선 등록"
+    },
+    {
+     "wait": ".yard .vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    }
+   ],
+   "account": "choi.qa",
+   "ref": "readonly-hull-list.png"
+  },
+  {
+   "name": "scn-signup",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/login"
+    },
+    {
+     "click": ".ac-foot a"
+    },
+    {
+     "fill": [
+      "#su-last_name",
+      "테"
+     ]
+    },
+    {
+     "fill": [
+      "#su-first_name",
+      "스트"
+     ]
+    },
+    {
+     "fill": [
+      "#su-birth_date",
+      "1990-01-01"
+     ]
+    },
+    {
+     "fill": [
+      "#su-phone",
+      "010-9999-1234"
+     ]
+    },
+    {
+     "fill": [
+      "#su-email",
+      "shots.t@swp.co.kr"
+     ]
+    },
+    {
+     "fill": [
+      "#su-emp_no",
+      "shots.t"
+     ]
+    },
+    {
+     "fill": [
+      "#su-password",
+      "password1"
+     ]
+    },
+    {
+     "fill": [
+      "#su-password_confirm",
+      "password1"
+     ]
+    },
+    {
+     "click": "button[type=submit]"
+    },
+    {
+     "expect": "가입 신청 완료"
+    }
+   ],
+   "mutates": true
+  },
+  {
+   "name": "scn-hull-create",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": "text=+ 호선 등록"
+    },
+    {
+     "fill": [
+      ".hull-info input",
+      "9901"
+     ]
+    },
+    {
+     "fill": [
+      ".hull-info input[type=date] >> nth=1",
+      "2028-12-31"
+     ]
+    },
+    {
+     "click": ".hull-info button[type=submit]"
+    },
+    {
+     "expect": "호선이 등록되었습니다."
+    },
+    {
+     "expect": "호선 9901"
+    },
+    {
+     "click": ".subtabs button:has-text('주요일정')"
+    },
+    {
+     "expect": "2028-12-31"
+    }
+   ],
+   "account": "park.pm",
+   "mutates": true
+  },
+  {
+   "name": "scn-plan-drag",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": ".bar"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "cursor": true
+    },
+    {
+     "drag": [
+      ".bar[aria-label^='[301] 도장']",
+      24
+     ]
+    },
+    {
+     "expect": "저장되었습니다"
+    }
+   ],
+   "account": "park.pm",
+   "mutates": true
+  },
+  {
+   "name": "scn-progress-save",
+   "phase": "P3",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 실적')"
+    },
+    {
+     "wait": ".progress-table tbody tr"
+    },
+    {
+     "click": ".progress-table tbody tr:first-child"
+    },
+    {
+     "fill": [
+      ".prog-detail input[type=number] >> nth=0",
+      "75"
+     ]
+    },
+    {
+     "click": "text=실적 저장"
+    },
+    {
+     "expect": "실적이 저장되었습니다."
+    }
+   ],
+   "account": "park.pm",
+   "mutates": true
+  },
+  {
+   "name": "dashboard",
+   "account": "admin",
+   "ref": "dashboard.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('대시보드')"
+    },
+    {
+     "click": "button:has-text('다른 탭 닫기')"
+    },
+    {
+     "wait": ".kpi"
+    },
+    {
+     "wait": 900
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "drawing-list",
+   "account": "admin",
+   "ref": "drawing-list.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "wait": 500
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "drawing-hover",
+   "account": "admin",
+   "ref": "drawing-hover.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "hover": ".dwg-table tbody tr:first-child td:nth-child(5)"
+    },
+    {
+     "wait": ".hcard .pvt"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "drawing-new",
+   "account": "admin",
+   "ref": "drawing-new.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "click": "text=+ 도면 등록"
+    },
+    {
+     "wait": ".dwg-info"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "drawing-detail",
+   "account": "admin",
+   "ref": "drawing-detail.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "click": "button:has-text('다른 탭 닫기')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "fill": [
+      "input[aria-label=검색어]",
+      "8001-PIPE-501"
+     ]
+    },
+    {
+     "press": [
+      "input[aria-label=검색어]",
+      "Enter"
+     ]
+    },
+    {
+     "wait": ".dwg-table tbody tr:has-text('8001-PIPE-501')"
+    },
+    {
+     "click": ".dwg-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".dgrid .revs"
+    },
+    {
+     "wait": 600
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "drawing-detail-draft",
+   "account": "admin",
+   "ref": "drawing-detail-draft.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "click": "button:has-text('다른 탭 닫기')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "fill": [
+      "input[aria-label=검색어]",
+      "8002-PIPE-401"
+     ]
+    },
+    {
+     "press": [
+      "input[aria-label=검색어]",
+      "Enter"
+     ]
+    },
+    {
+     "wait": ".dwg-table tbody tr:has-text('8002-PIPE-401')"
+    },
+    {
+     "click": ".dwg-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".dgrid .revs"
+    },
+    {
+     "wait": 600
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "approvals",
+   "account": "admin",
+   "ref": "approvals.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('결재함')"
+    },
+    {
+     "wait": ".wait-table"
+    },
+    {
+     "wait": 500
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "users",
+   "account": "admin",
+   "ref": "users.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('회원관리')"
+    },
+    {
+     "wait": ".user-table tbody tr"
+    },
+    {
+     "click": ".user-table tbody tr:has-text('choi.qa')"
+    },
+    {
+     "wait": ".perm-table tbody tr"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "users-new",
+   "account": "admin",
+   "ref": "users-new.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('회원관리')"
+    },
+    {
+     "click": "button:has-text('다른 탭 닫기')"
+    },
+    {
+     "wait": ".user-table tbody tr"
+    },
+    {
+     "press": [
+      "button:has-text('신규')",
+      "Enter"
+     ]
+    },
+    {
+     "wait": ".user-form"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "usage-log",
+   "account": "admin",
+   "ref": "usage-log.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('사용 로그')"
+    },
+    {
+     "wait": ".usage .kpi"
+    },
+    {
+     "select": [
+      "select[aria-label=기간]",
+      "30"
+     ]
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "inquiry-admin",
+   "account": "admin",
+   "ref": "inquiry-admin.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": ".inq-table tbody tr:has-text('공정 계획 엑셀 내보내기 요청')"
+    },
+    {
+     "wait": ".proc"
+    },
+    {
+     "wait": 400
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "scn-approve",
+   "account": "admin",
+   "mutates": true,
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('결재함')"
+    },
+    {
+     "wait": ".wait-table tbody tr"
+    },
+    {
+     "click": ".wait-table button:has-text('승인')"
+    },
+    {
+     "expect": "승인했습니다."
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "inquiry-user",
+   "account": "park.pm",
+   "ref": "inquiry-user.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": "text=+ 새 글 작성"
+    },
+    {
+     "wait": ".ed"
+    },
+    {
+     "wait": 300
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "readonly-drawing",
+   "account": "choi.qa",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('도면 목록')"
+    },
+    {
+     "wait": ".dwg-table tbody tr"
+    },
+    {
+     "wait": ".dwg-list .ro-badge"
+    },
+    {
+     "expectNot": "+ 도면 등록"
+    },
+    {
+     "click": ".dwg-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".dgrid .revs"
+    },
+    {
+     "expectNot": "신규 Rev 작성"
+    },
+    {
+     "expectNot": "+ 공정 연계"
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "name": "scn-inquiry-create",
+   "account": "park.pm",
+   "mutates": true,
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": "text=+ 새 글 작성"
+    },
+    {
+     "fill": [
+      "input[aria-label=제목]",
+      "shots 문의"
+     ]
+    },
+    {
+     "fill": [
+      "textarea[aria-label=내용]",
+      "내용입니다"
+     ]
+    },
+    {
+     "click": ".ed button[type=submit]"
+    },
+    {
+     "expect": "등록되었습니다. 관리자가 확인 후 답변합니다."
+    }
+   ],
+   "phase": "P4"
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "chat",
+   "account": "park.pm",
+   "ref": "chat.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "wait": 500
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "chat-hulls",
+   "account": "park.pm",
+   "ref": "chat-hulls.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "click": ".qb:has-text('호선 정보')"
+    },
+    {
+     "wait": ".ccard"
+    },
+    {
+     "hover": ".ccard"
+    },
+    {
+     "wait": 500
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "chat-report",
+   "account": "park.pm",
+   "ref": "chat-report.png",
+   "mutates": true,
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "click": ".qb.rep"
+    },
+    {
+     "wait": ".rcard .pill:has-text('8001')"
+    },
+    {
+     "click": ".rcard .pill:has-text('8001')"
+    },
+    {
+     "click": ".rcard .go"
+    },
+    {
+     "wait": ".rcard .res"
+    },
+    {
+     "expect": "8001 호선 현황 보고서"
+    },
+    {
+     "wait": 400
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "manual",
+   "account": "admin",
+   "ref": "manual.png",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('공정 계획')"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "click": ".tbtn:has-text('매뉴얼')"
+    },
+    {
+     "wait": ".manual .shot img"
+    },
+    {
+     "expect": "호선을 선택하고 간트 차트에서"
+    },
+    {
+     "wait": 700
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-chat-hull-detail",
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "click": ".qb:has-text('호선 정보')"
+    },
+    {
+     "wait": ".ccard"
+    },
+    {
+     "click": ".ccard:has-text('8001')"
+    },
+    {
+     "wait": ".mpanel"
+    },
+    {
+     "expect": "호선 8001"
+    },
+    {
+     "expectNot": "조선소 챗봇"
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-chat-drawing",
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "fill": [
+      ".cin",
+      "도면 목록 보여줘"
+     ]
+    },
+    {
+     "press": [
+      ".cin",
+      "Enter"
+     ]
+    },
+    {
+     "wait": ".ccard"
+    },
+    {
+     "expect": "상세 정보를 볼 도면을 선택해 주세요."
+    },
+    {
+     "click": ".ccard"
+    },
+    {
+     "wait": ".dgrid .revs"
+    },
+    {
+     "expectNot": "신규 Rev 작성"
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-chat-progress",
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "click": ".qb:has-text('공정 실적')"
+    },
+    {
+     "wait": ".ccard"
+    },
+    {
+     "click": ".ccard:has-text('8001')"
+    },
+    {
+     "expect": "8001호선의 공정을 선택해 주세요."
+    },
+    {
+     "click": ".cards >> nth=1 >> .ccard >> nth=0"
+    },
+    {
+     "expect": "최근 작업일"
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-chat-manual",
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "fill": [
+      ".cin",
+      "도면 사용법 알려줘"
+     ]
+    },
+    {
+     "press": [
+      ".cin",
+      "Enter"
+     ]
+    },
+    {
+     "wait": ".manual"
+    },
+    {
+     "expect": "도면 상세에서 리비전과 PDF를 확인합니다."
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-manual-open",
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('대시보드')"
+    },
+    {
+     "click": ".tbtn:has-text('매뉴얼')"
+    },
+    {
+     "wait": ".manual"
+    },
+    {
+     "expect": "호선·공정·도면 지표에서"
+    },
+    {
+     "expectNot": "회원 관리"
+    },
+    {
+     "click": ".manual .steps .btn:has-text('호선·3D 조선소')"
+    },
+    {
+     "click": ".mhd .btn:has-text('업무 화면 열기')"
+    },
+    {
+     "expectNot": "조선소 업무 매뉴얼"
+    },
+    {
+     "wait": ".hull-table"
+    }
+   ]
+  },
+  {
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "name": "scn-chat-feedback",
+   "account": "park.pm",
+   "mutates": true,
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('건의·문의')"
+    },
+    {
+     "wait": ".inq-table tbody tr"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "click": ".qb:has-text('건의하기')"
+    },
+    {
+     "wait": ".fbar"
+    },
+    {
+     "fill": [
+      ".cin",
+      "shots 챗봇 건의"
+     ]
+    },
+    {
+     "press": [
+      ".cin",
+      "Enter"
+     ]
+    },
+    {
+     "expect": "접수했습니다. 접수번호 FB-"
+    },
+    {
+     "expect": "[챗봇 건의] shots 챗봇 건의"
+    }
+   ]
+  },
+  {
+   "name": "hull-3d",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "expect": "호선 디지털 트윈"
+    },
+    {
+     "expect": "가상 조선소 · 예시 선체 형상"
+    }
+   ],
+   "ref": "hull-3d.png"
+  },
+  {
+   "name": "ship-side",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "click": ".vviews button:has-text('측면')"
+    },
+    {
+     "wait": 2500
+    }
+   ],
+   "ref": "ship-side.png",
+   "clip": ".vwrap"
+  },
+  {
+   "name": "ship-front",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "click": ".vviews button:has-text('정면')"
+    },
+    {
+     "wait": 2500
+    }
+   ],
+   "ref": "ship-front.png",
+   "clip": ".vwrap"
+  },
+  {
+   "name": "ship-top",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "click": ".vviews button:has-text('상단')"
+    },
+    {
+     "wait": 2500
+    }
+   ],
+   "ref": "ship-top.png",
+   "clip": ".vwrap"
+  },
+  {
+   "name": "viewer-reset",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "mouseTo": [
+      ".vwrap",
+      300
+     ]
+    },
+    {
+     "mouseDown": true
+    },
+    {
+     "mouseBy": 160
+    },
+    {
+     "mouseUp": true
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": ".vviews button:has-text('상단')"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": ".vviews button:has-text('초기화')"
+    },
+    {
+     "wait": 3000
+    }
+   ],
+   "clip": ".vwrap"
+  },
+  {
+   "name": "viewer-roundtrip",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "click": ".subtabs button:has-text('기본정보')"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "click": ".subtabs button:has-text('주요일정')"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "press": [
+      "body",
+      "Escape"
+     ]
+    },
+    {
+     "expectNot": "호선 디지털 트윈"
+    },
+    {
+     "wait": ".hull-table"
+    }
+   ]
+  },
+  {
+   "name": "hull-yard",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "wait": ".yard .vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "expect": "3D 조선소"
+    }
+   ],
+   "ref": "hull-yard.png"
+  },
+  {
+   "name": "yard-hover",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "wait": ".yard .vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "mouseTo": [
+      ".yard .vwrap",
+      400
+     ]
+    },
+    {
+     "wait": ".vhover"
+    },
+    {
+     "expect": "클릭하여 상세 보기"
+    },
+    {
+     "expect": "드라이도크"
+    }
+   ]
+  },
+  {
+   "name": "yard-select",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "wait": ".yard .vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "mouseTo": [
+      ".yard .vwrap",
+      400
+     ]
+    },
+    {
+     "wait": ".vhover"
+    },
+    {
+     "mouseDown": true
+    },
+    {
+     "mouseUp": true
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "wait": ".yard-off"
+    },
+    {
+     "expectNot": "클릭하여 상세 보기"
+    }
+   ]
+  },
+  {
+   "name": "viewer-hover",
+   "phase": "P6",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('호선 목록')"
+    },
+    {
+     "wait": ".hull-table tbody tr"
+    },
+    {
+     "click": ".hull-table tbody tr:first-child .btn"
+    },
+    {
+     "wait": ".hull-info"
+    },
+    {
+     "click": ".subtabs button:has-text('3D 보기')"
+    },
+    {
+     "wait": ".vwrap[data-state=ready]"
+    },
+    {
+     "wait": 2500
+    },
+    {
+     "mouseTo": [
+      ".vwrap",
+      549
+     ]
+    },
+    {
+     "wait": ".vhover"
+    },
+    {
+     "expect": "건조 · 진척률 65%"
+    }
+   ]
+  },
+  {
+   "name": "dash-hover",
+   "phase": "P4",
+   "account": "admin",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "click": ".menu .mi:has-text('대시보드')"
+    },
+    {
+     "wait": ".kpi"
+    },
+    {
+     "wait": 900
+    },
+    {
+     "cursor": true
+    },
+    {
+     "mouseTo": [
+      ".hp >> nth=1"
+     ]
+    },
+    {
+     "wait": ".ctip"
+    },
+    {
+     "expect": "진척률"
+    },
+    {
+     "frame": "호선 행 호버"
+    },
+    {
+     "mouseTo": [
+      ".donut",
+      -20
+     ]
+    },
+    {
+     "wait": ".donut.hov"
+    },
+    {
+     "frame": "도넛 구간 호버"
+    },
+    {
+     "mouseTo": [
+      ".donut",
+      20
+     ]
+    },
+    {
+     "frame": "도넛 다른 구간 호버"
+    },
+    {
+     "mouseTo": [
+      ".stack >> nth=0 >> i >> nth=0"
+     ]
+    },
+    {
+     "wait": ".stack.hov"
+    },
+    {
+     "frame": "분야 스택 호버"
+    },
+    {
+     "mouseTo": [
+      ".dcol >> nth=0"
+     ]
+    },
+    {
+     "wait": ".deliv.hov"
+    },
+    {
+     "expect": "인도 예정"
+    },
+    {
+     "frame": "월별 인도 호버"
+    },
+    {
+     "mouseTo": [
+      ".kpi >> nth=0"
+     ]
+    },
+    {
+     "frame": "벗어남"
+    },
+    {
+     "click": ".hp >> nth=0"
+    },
+    {
+     "wait": 1000
+    },
+    {
+     "frame": "호선 클릭 이동"
+    }
+   ]
+  },
+  {
+   "name": "chat-hello-hover",
+   "phase": "P5",
+   "viewport": [
+    1440,
+    900
+   ],
+   "account": "park.pm",
+   "steps": [
+    {
+     "goto": "/"
+    },
+    {
+     "wait": ".tabbar"
+    },
+    {
+     "wait": ".hello"
+    },
+    {
+     "cursor": true
+    },
+    {
+     "frame": "기본"
+    },
+    {
+     "mouseTo": [
+      ".launcher"
+     ]
+    },
+    {
+     "wait": 300
+    },
+    {
+     "frame": "아이콘 호버"
+    },
+    {
+     "mouseTo": [
+      ".hello"
+     ]
+    },
+    {
+     "wait": 300
+    },
+    {
+     "frame": "숨은 말풍선 자리"
+    },
+    {
+     "mouseBy": 40
+    },
+    {
+     "wait": 300
+    },
+    {
+     "frame": "말풍선 자리 안 이동"
+    },
+    {
+     "mouseBy": 400
+    },
+    {
+     "wait": 300
+    },
+    {
+     "frame": "벗어남"
+    },
+    {
+     "click": ".launcher"
+    },
+    {
+     "wait": ".cpanel"
+    },
+    {
+     "frame": "열림"
+    },
+    {
+     "press": [
+      ".cin",
+      "Escape"
+     ]
+    },
+    {
+     "expectNot": "로컬 AI"
+    },
+    {
+     "wait": 300
+    },
+    {
+     "frame": "Esc 닫힘"
+    }
+   ]
+  }
+ ]
+}

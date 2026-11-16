@@ -1,0 +1,24 @@
+{
+  "ts": "2026-11-16T10:57:30.595+00:00",
+  "ok": true,
+  "phases": [
+    "TOUR"
+  ],
+  "skipped_mutating": [],
+  "results": [
+    {
+      "name": "13-manual",
+      "phase": "TOUR",
+      "ref": null,
+      "file": "reports/shots/13-manual.png",
+      "status": "pass"
+    },
+    {
+      "name": "14-readonly",
+      "phase": "TOUR",
+      "ref": null,
+      "file": "reports/shots/14-readonly.png",
+      "status": "pass"
+    }
+  ]
+}

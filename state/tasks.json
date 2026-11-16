@@ -1,0 +1,979 @@
+{
+  "phases": [
+    {
+      "id": "P1",
+      "title": "백엔드 1: 구성·스키마·시드·인증·셸·호선·공정 계획·실적 API",
+      "checkpoint": [
+        "backend"
+      ],
+      "shots": false,
+      "notes": "frontend는 Vite 골격·API 클라이언트·sessionStorage swp_token만. 권한 등급 함수(BR-10)는 처음부터 회원별 지정을 포함해 한 곳에 둔다. 마이그레이션 0001~0004를 모두 이 단계에서 만든다."
+    },
+    {
+      "id": "P2",
+      "title": "백엔드 2: 도면·결재·회원(+메뉴 권한)·대시보드·사용 로그·건의·문의·예시 데이터·데모",
+      "checkpoint": [
+        "backend"
+      ],
+      "shots": false,
+      "notes": "P1 서비스·권한 함수를 SOURCEMAP에서 찾아 재사용한다. 사용 로그 미들웨어는 모든 라우터 등록 뒤 main에 둔다."
+    },
+    {
+      "id": "P3",
+      "title": "화면 1: 인증·셸·디자인(모션·마우스오버 공통)·호선·공정 계획·실적",
+      "checkpoint": [
+        "frontend",
+        "build"
+      ],
+      "shots": true,
+      "notes": "백엔드 코드는 읽지 않고 SOURCEMAP의 API 계약과 명세를 쓴다. HoverCard·useHoverPreview·ProgressBar·AppModal·토스트를 이 단계에서 확정한다. dev 시드는 예시 데이터 포함."
+    },
+    {
+      "id": "P4",
+      "title": "화면 2: 도면·결재·회원관리·대시보드·사용 로그·건의·문의",
+      "checkpoint": [
+        "frontend",
+        "build"
+      ],
+      "shots": true,
+      "notes": "P3 공유 컴포넌트를 SOURCEMAP에서 찾아 재사용한다."
+    },
+    {
+      "id": "P5",
+      "title": "챗봇: MCP 서버·Ollama·챗봇 화면·보고서·매뉴얼",
+      "checkpoint": [
+        "backend",
+        "frontend",
+        "build"
+      ],
+      "shots": true,
+      "notes": "Ollama가 없으면 handoff.sh block으로 기록하고 MCP 경로와 오류 문구는 완성한다. 매뉴얼 사진은 reference/manual에서 복사한다."
+    },
+    {
+      "id": "P6",
+      "title": "Unity(단일·fleet)·3D 탭·3D 조선소와 최종 수용 검증",
+      "checkpoint": [
+        "all"
+      ],
+      "shots": true,
+      "notes": "Unity 빌드 진입점은 ViewerBuild.Build(config/workflow.json). 수용 시나리오는 state/shots.json 흐름으로 fresh DB에서 실행한다."
+    }
+  ],
+  "tasks": {
+    "T01": {
+      "phase": "P1",
+      "step": 1,
+      "title": "프로젝트 구성, 스키마(0001~0004), 시드, init-db 옵션 자리",
+      "specs": [
+        "specs/foundation.md",
+        "specs/data-model.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T02": {
+      "phase": "P1",
+      "step": 2,
+      "title": "인증 API",
+      "specs": [
+        "specs/F01.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T03": {
+      "phase": "P1",
+      "step": 3,
+      "title": "메뉴·날씨·코드 API, 권한 함수(BR-10)",
+      "specs": [
+        "specs/F02.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T04": {
+      "phase": "P1",
+      "step": 4,
+      "title": "호선 API",
+      "specs": [
+        "specs/F04.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T05": {
+      "phase": "P1",
+      "step": 5,
+      "title": "공정 계획 API + schedule 연쇄",
+      "specs": [
+        "specs/F05.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T06": {
+      "phase": "P1",
+      "step": 6,
+      "title": "공정 실적 API",
+      "specs": [
+        "specs/F06.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T07": {
+      "phase": "P2",
+      "step": 7,
+      "title": "도면 API",
+      "specs": [
+        "specs/F07.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T08": {
+      "phase": "P2",
+      "step": 8,
+      "title": "결재 API",
+      "specs": [
+        "specs/F08.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T09": {
+      "phase": "P2",
+      "step": 9,
+      "title": "회원관리 API + 회원별 메뉴 권한",
+      "specs": [
+        "specs/F09.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T10": {
+      "phase": "P2",
+      "step": 10,
+      "title": "대시보드 API",
+      "specs": [
+        "specs/F03.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T11": {
+      "phase": "P2",
+      "step": 11,
+      "title": "사용 로그 미들웨어·집계 API",
+      "specs": [
+        "specs/F11.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T12": {
+      "phase": "P2",
+      "step": 12,
+      "title": "건의·문의 API",
+      "specs": [
+        "specs/F12.md",
+        "specs/rules.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T13": {
+      "phase": "P2",
+      "step": 13,
+      "title": "예시 PDF·예시 사용 로그·데모 역할 전환",
+      "specs": [
+        "specs/F16.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T14": {
+      "phase": "P3",
+      "step": 14,
+      "title": "인증 화면",
+      "specs": [
+        "specs/F01.md"
+      ],
+      "images": [
+        "login",
+        "login-error",
+        "signup",
+        "otp",
+        "login-mobile"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T15": {
+      "phase": "P3",
+      "step": 15,
+      "title": "공통 셸·디자인·모션·마우스오버 공통·날씨",
+      "specs": [
+        "specs/F02.md",
+        "specs/ui.md"
+      ],
+      "images": [
+        "dashboard"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T16": {
+      "phase": "P3",
+      "step": 16,
+      "title": "호선 화면 + 미리보기",
+      "specs": [
+        "specs/F04.md"
+      ],
+      "images": [
+        "hull-list",
+        "hull-hover",
+        "hull-new",
+        "hull-info",
+        "hull-milestones",
+        "hull-blocks",
+        "hull-summary",
+        "readonly-hull-list"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T17": {
+      "phase": "P3",
+      "step": 17,
+      "title": "공정 계획 화면 + 드래그·카드·휴일",
+      "specs": [
+        "specs/F05.md"
+      ],
+      "images": [
+        "plan-gantt",
+        "plan-hover",
+        "plan-zoom",
+        "plan-selected",
+        "plan-new",
+        "plan-drawing-wait"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T18": {
+      "phase": "P3",
+      "step": 18,
+      "title": "공정 실적 화면 + 미리보기",
+      "specs": [
+        "specs/F06.md"
+      ],
+      "images": [
+        "progress",
+        "progress-hover"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T19": {
+      "phase": "P4",
+      "step": 19,
+      "title": "도면 화면 + PDF 미리보기",
+      "specs": [
+        "specs/F07.md"
+      ],
+      "images": [
+        "drawing-list",
+        "drawing-hover",
+        "drawing-new",
+        "drawing-detail",
+        "drawing-detail-draft"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T20": {
+      "phase": "P4",
+      "step": 20,
+      "title": "결재 화면",
+      "specs": [
+        "specs/F08.md"
+      ],
+      "images": [
+        "approvals"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T21": {
+      "phase": "P4",
+      "step": 21,
+      "title": "회원관리 화면 + 메뉴 권한 표",
+      "specs": [
+        "specs/F09.md"
+      ],
+      "images": [
+        "users",
+        "users-new"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T22": {
+      "phase": "P4",
+      "step": 22,
+      "title": "대시보드 화면 + 업무 흐름",
+      "specs": [
+        "specs/F03.md"
+      ],
+      "images": [
+        "dashboard"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T23": {
+      "phase": "P4",
+      "step": 23,
+      "title": "사용 로그 화면",
+      "specs": [
+        "specs/F11.md"
+      ],
+      "images": [
+        "usage-log"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T24": {
+      "phase": "P4",
+      "step": 24,
+      "title": "건의·문의 화면",
+      "specs": [
+        "specs/F12.md"
+      ],
+      "images": [
+        "inquiry-user",
+        "inquiry-admin"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T25": {
+      "phase": "P5",
+      "step": 25,
+      "title": "MCP 서버·채팅 API·Ollama 연결",
+      "specs": [
+        "specs/F13.md"
+      ],
+      "images": [],
+      "verify": [
+        "backend"
+      ]
+    },
+    "T26": {
+      "phase": "P5",
+      "step": 26,
+      "title": "챗봇 화면",
+      "specs": [
+        "specs/F13.md"
+      ],
+      "images": [
+        "chat",
+        "chat-hulls"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T27": {
+      "phase": "P5",
+      "step": 27,
+      "title": "보고서 PDF·XLSX",
+      "specs": [
+        "specs/F14.md"
+      ],
+      "images": [
+        "chat-report"
+      ],
+      "verify": [
+        "backend",
+        "frontend"
+      ]
+    },
+    "T28": {
+      "phase": "P5",
+      "step": 28,
+      "title": "업무 매뉴얼",
+      "specs": [
+        "specs/F15.md"
+      ],
+      "images": [
+        "manual"
+      ],
+      "verify": [
+        "frontend"
+      ]
+    },
+    "T29": {
+      "phase": "P6",
+      "step": 29,
+      "title": "Unity 뷰어(단일·fleet)·3D 탭·3D 조선소",
+      "specs": [
+        "specs/F10.md",
+        "specs/F04.md"
+      ],
+      "images": [
+        "hull-3d",
+        "hull-yard",
+        "ship-side",
+        "ship-front",
+        "ship-top"
+      ],
+      "verify": [
+        "unity",
+        "frontend"
+      ]
+    },
+    "T30": {
+      "phase": "P6",
+      "step": 30,
+      "title": "최종 수용 검증",
+      "specs": [
+        "specs/index.md"
+      ],
+      "images": [],
+      "verify": [
+        "all"
+      ]
+    }
+  },
+  "status": {
+    "T01": {
+      "state": "done",
+      "at": "2026-11-14T15:22:08+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 25,
+      "files": [
+        "backend/.env.example",
+        "backend/app/__init__.py",
+        "backend/app/cli.py",
+        "backend/app/config.py",
+        "backend/app/db.py",
+        "backend/app/errors.py",
+        "backend/app/main.py",
+        "backend/app/security.py",
+        "backend/app/seed.py",
+        "backend/app/services/__init__.py",
+        "backend/app/services/demo.py",
+        "backend/pyproject.toml",
+        "backend/tests/__init__.py",
+        "backend/tests/conftest.py",
+        "backend/tests/test_foundation.py",
+        "database/migrations/0001_init.sql",
+        "database/migrations/0002_user_menu.sql",
+        "database/migrations/0003_log_api.sql",
+        "database/migrations/0004_inquiry.sql",
+        "frontend/index.html",
+        "frontend/package.json",
+        "frontend/src/App.vue",
+        "frontend/src/api/client.js",
+        "frontend/src/main.js",
+        "frontend/vite.config.js"
+      ]
+    },
+    "T02": {
+      "state": "done",
+      "at": "2026-11-14T15:24:16+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 13,
+      "files": [
+        "backend/app/deps.py",
+        "backend/app/main.py",
+        "backend/app/permissions.py",
+        "backend/app/routers/__init__.py",
+        "backend/app/routers/auth.py",
+        "backend/app/routers/shell.py",
+        "backend/app/schemas.py",
+        "backend/app/services/auth.py",
+        "backend/app/services/shell.py",
+        "backend/app/services/weather.py",
+        "backend/app/util.py",
+        "backend/tests/test_auth.py",
+        "backend/tests/test_shell.py"
+      ]
+    },
+    "T03": {
+      "state": "done",
+      "at": "2026-11-14T15:24:16+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 0,
+      "files": []
+    },
+    "T04": {
+      "state": "done",
+      "at": "2026-11-14T15:26:16+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 6,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/hulls.py",
+        "backend/app/services/hulls.py",
+        "backend/app/services/rules.py",
+        "backend/app/storage.py",
+        "backend/tests/test_hulls.py"
+      ]
+    },
+    "T05": {
+      "state": "done",
+      "at": "2026-11-14T15:29:33+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 8,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/plans.py",
+        "backend/app/routers/progress.py",
+        "backend/app/services/plans.py",
+        "backend/app/services/progress.py",
+        "backend/tests/helpers.py",
+        "backend/tests/test_plans.py",
+        "backend/tests/test_progress.py"
+      ]
+    },
+    "T06": {
+      "state": "done",
+      "at": "2026-11-14T15:29:33+09:00",
+      "session": "44668c62-b773-4fbd-9953-160aeb039147",
+      "files_count": 0,
+      "files": []
+    },
+    "T07": {
+      "state": "done",
+      "at": "2026-11-14T15:38:26+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 10,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/approvals.py",
+        "backend/app/routers/drawings.py",
+        "backend/app/schemas.py",
+        "backend/app/services/approvals.py",
+        "backend/app/services/drawings.py",
+        "backend/app/services/plans.py",
+        "backend/app/services/rules.py",
+        "backend/tests/test_approvals.py",
+        "backend/tests/test_drawings.py"
+      ]
+    },
+    "T08": {
+      "state": "done",
+      "at": "2026-11-14T15:38:26+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 0,
+      "files": []
+    },
+    "T09": {
+      "state": "done",
+      "at": "2026-11-14T15:39:44+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 4,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/users.py",
+        "backend/app/services/users.py",
+        "backend/tests/test_users.py"
+      ]
+    },
+    "T10": {
+      "state": "done",
+      "at": "2026-11-14T15:40:20+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 4,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/dashboard.py",
+        "backend/app/services/dashboard.py",
+        "backend/tests/test_dashboard.py"
+      ]
+    },
+    "T11": {
+      "state": "done",
+      "at": "2026-11-14T15:41:12+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 6,
+      "files": [
+        "backend/app/deps.py",
+        "backend/app/main.py",
+        "backend/app/routers/usage.py",
+        "backend/app/services/usage.py",
+        "backend/app/usage_log.py",
+        "backend/tests/test_usage.py"
+      ]
+    },
+    "T12": {
+      "state": "done",
+      "at": "2026-11-14T15:41:56+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 4,
+      "files": [
+        "backend/app/main.py",
+        "backend/app/routers/inquiries.py",
+        "backend/app/services/inquiries.py",
+        "backend/tests/test_inquiries.py"
+      ]
+    },
+    "T13": {
+      "state": "done",
+      "at": "2026-11-14T15:43:48+09:00",
+      "session": "04b71624-1c04-42fa-8e60-cdef0f8257bf",
+      "files_count": 5,
+      "files": [
+        "backend/app/routers/auth.py",
+        "backend/app/services/auth.py",
+        "backend/app/services/demo.py",
+        "backend/tests/test_demo.py",
+        "scripts/demo.sh"
+      ]
+    },
+    "T14": {
+      "state": "done",
+      "at": "2026-11-14T15:52:24+09:00",
+      "session": "8657c82f-da8d-4ce5-bcca-b4a516988316",
+      "files_count": 34,
+      "files": [
+        "backend/app/services/demo.py",
+        "frontend/src/App.vue",
+        "frontend/src/assets/auth-scene.svg",
+        "frontend/src/assets/manual/chat.jpg",
+        "frontend/src/assets/manual/dashboard.jpg",
+        "frontend/src/assets/manual/dwg-approval.jpg",
+        "frontend/src/assets/manual/dwg-list.jpg",
+        "frontend/src/assets/manual/hull-list.jpg",
+        "frontend/src/assets/manual/inquiry.jpg",
+        "frontend/src/assets/manual/plan-gantt.jpg",
+        "frontend/src/assets/manual/progress.jpg",
+        "frontend/src/assets/manual/usage-log.jpg",
+        "frontend/src/assets/manual/user-mgmt.jpg",
+        "frontend/src/components/AppModal.vue",
+        "frontend/src/components/AppToasts.vue",
+        "frontend/src/components/HoverCard.vue",
+        "frontend/src/components/PageHead.vue",
+        "frontend/src/components/ProgressBar.vue",
+        "frontend/src/components/WeatherWidget.vue",
+        "frontend/src/main.js",
+        "frontend/src/router.js",
+        "frontend/src/screens/PlaceholderScreen.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/stores/session.js",
+        "frontend/src/styles/global.css",
+        "frontend/src/utils/date.js",
+        "frontend/src/utils/hoverPreview.js",
+        "frontend/src/utils/tabs.js",
+        "frontend/src/utils/toast.js",
+        "frontend/src/utils/weather.js",
+        "frontend/src/views/LoginView.vue",
+        "frontend/src/views/ShellView.vue",
+        "frontend/tests/auth.test.js",
+        "frontend/tests/shell.test.js"
+      ]
+    },
+    "T15": {
+      "state": "done",
+      "at": "2026-11-14T15:52:24+09:00",
+      "session": "8657c82f-da8d-4ce5-bcca-b4a516988316",
+      "files_count": 0,
+      "files": []
+    },
+    "T16": {
+      "state": "done",
+      "at": "2026-11-14T15:54:09+09:00",
+      "session": "8657c82f-da8d-4ce5-bcca-b4a516988316",
+      "files_count": 8,
+      "files": [
+        "frontend/src/components/StatusBadge.vue",
+        "frontend/src/components/StatusChips.vue",
+        "frontend/src/screens/HullDetailModal.vue",
+        "frontend/src/screens/HullList.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/status.js",
+        "frontend/tests/helpers.js",
+        "frontend/tests/hull.test.js"
+      ]
+    },
+    "T17": {
+      "state": "done",
+      "at": "2026-11-14T15:59:20+09:00",
+      "session": "8657c82f-da8d-4ce5-bcca-b4a516988316",
+      "files_count": 6,
+      "files": [
+        "frontend/src/screens/PlanGantt.vue",
+        "frontend/src/screens/PlanPanel.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/gantt.js",
+        "frontend/src/utils/holidays.js",
+        "frontend/tests/gantt.test.js"
+      ]
+    },
+    "T18": {
+      "state": "done",
+      "at": "2026-11-14T16:00:09+09:00",
+      "session": "8657c82f-da8d-4ce5-bcca-b4a516988316",
+      "files_count": 3,
+      "files": [
+        "frontend/src/screens/ProgressInput.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/tests/progress.test.js"
+      ]
+    },
+    "T19": {
+      "state": "done",
+      "at": "2026-11-14T16:08:45+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 7,
+      "files": [
+        "frontend/src/api/client.js",
+        "frontend/src/screens/DrawingList.vue",
+        "frontend/src/screens/DrawingModal.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/pdf.js",
+        "frontend/src/views/ShellView.vue",
+        "frontend/tests/drawing.test.js"
+      ]
+    },
+    "T20": {
+      "state": "done",
+      "at": "2026-11-14T16:10:04+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 6,
+      "files": [
+        "frontend/src/screens/ApprovalInbox.vue",
+        "frontend/src/screens/Dashboard.vue",
+        "frontend/src/screens/DrawingModal.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/approval.js",
+        "frontend/tests/approval-dashboard.test.js"
+      ]
+    },
+    "T22": {
+      "state": "done",
+      "at": "2026-11-14T16:10:04+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 0,
+      "files": []
+    },
+    "T21": {
+      "state": "done",
+      "at": "2026-11-14T16:11:12+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 4,
+      "files": [
+        "frontend/src/screens/UserMgmt.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/menuPerm.js",
+        "frontend/tests/users.test.js"
+      ]
+    },
+    "T23": {
+      "state": "done",
+      "at": "2026-11-14T16:13:12+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 6,
+      "files": [
+        "frontend/src/screens/Inquiry.vue",
+        "frontend/src/screens/UsageLog.vue",
+        "frontend/src/screens/registry.js",
+        "frontend/src/utils/chart.js",
+        "frontend/src/utils/date.js",
+        "frontend/tests/usage-inquiry.test.js"
+      ]
+    },
+    "T24": {
+      "state": "done",
+      "at": "2026-11-14T16:13:12+09:00",
+      "session": "30e359bc-3a30-444f-9ef3-254cfa309290",
+      "files_count": 0,
+      "files": []
+    },
+    "T25": {
+      "state": "done",
+      "at": "2026-11-14T16:22:44+09:00",
+      "session": "a32f75a0-fd1c-4817-bd0f-f8b23cc971f1",
+      "files_count": 11,
+      "files": [
+        "backend/.env.example",
+        "backend/app/config.py",
+        "backend/app/hull_mcp.py",
+        "backend/app/main.py",
+        "backend/app/routers/chat.py",
+        "backend/app/schemas.py",
+        "backend/app/services/chat.py",
+        "backend/app/services/reports.py",
+        "backend/pyproject.toml",
+        "backend/tests/test_chat.py",
+        "frontend/src/components/AppModal.vue"
+      ]
+    },
+    "T26": {
+      "state": "done",
+      "at": "2026-11-14T16:26:23+09:00",
+      "session": "a32f75a0-fd1c-4817-bd0f-f8b23cc971f1",
+      "files_count": 18,
+      "files": [
+        "frontend/src/assets/manual/chat.jpg",
+        "frontend/src/assets/manual/dashboard.jpg",
+        "frontend/src/assets/manual/dwg-approval.jpg",
+        "frontend/src/assets/manual/dwg-list.jpg",
+        "frontend/src/assets/manual/hull-list.jpg",
+        "frontend/src/assets/manual/inquiry.jpg",
+        "frontend/src/assets/manual/plan-gantt.jpg",
+        "frontend/src/assets/manual/progress.jpg",
+        "frontend/src/assets/manual/usage-log.jpg",
+        "frontend/src/assets/manual/user-mgmt.jpg",
+        "frontend/src/components/ChatReport.vue",
+        "frontend/src/components/ShipChat.vue",
+        "frontend/src/components/WorkflowManual.vue",
+        "frontend/src/screens/Inquiry.vue",
+        "frontend/src/utils/chat.js",
+        "frontend/src/utils/manual.js",
+        "frontend/src/views/ShellView.vue",
+        "frontend/tests/chat-manual.test.js"
+      ]
+    },
+    "T27": {
+      "state": "done",
+      "at": "2026-11-14T16:26:23+09:00",
+      "session": "a32f75a0-fd1c-4817-bd0f-f8b23cc971f1",
+      "files_count": 0,
+      "files": []
+    },
+    "T28": {
+      "state": "done",
+      "at": "2026-11-14T16:26:23+09:00",
+      "session": "a32f75a0-fd1c-4817-bd0f-f8b23cc971f1",
+      "files_count": 0,
+      "files": []
+    },
+    "T29": {
+      "state": "done",
+      "at": "2026-11-14T16:39:24+09:00",
+      "session": "ee2167d4-9b2e-4157-8281-8aac486a99ec",
+      "files_count": 40,
+      "files": [
+        "frontend/src/components/ShipViewer3D.vue",
+        "frontend/src/screens/HullDetailModal.vue",
+        "frontend/src/screens/HullList.vue",
+        "frontend/src/utils/unityViewer.js",
+        "frontend/tests/hull.test.js",
+        "frontend/tests/viewer.test.js",
+        "unity/ShipyardViewer/Assets/Editor.meta",
+        "unity/ShipyardViewer/Assets/Editor/ViewerBuild.cs",
+        "unity/ShipyardViewer/Assets/Editor/ViewerBuild.cs.meta",
+        "unity/ShipyardViewer/Assets/Materials.meta",
+        "unity/ShipyardViewer/Assets/Materials/Accent.mat",
+        "unity/ShipyardViewer/Assets/Materials/Accent.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Deck.mat",
+        "unity/ShipyardViewer/Assets/Materials/Deck.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Glass.mat",
+        "unity/ShipyardViewer/Assets/Materials/Glass.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Ground.mat",
+        "unity/ShipyardViewer/Assets/Materials/Ground.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/House.mat",
+        "unity/ShipyardViewer/Assets/Materials/House.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/HullLower.mat",
+        "unity/ShipyardViewer/Assets/Materials/HullLower.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/HullUpper.mat",
+        "unity/ShipyardViewer/Assets/Materials/HullUpper.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Steel.mat",
+        "unity/ShipyardViewer/Assets/Materials/Steel.mat.meta",
+        "unity/ShipyardViewer/Assets/Plugins.meta",
+        "unity/ShipyardViewer/Assets/Plugins/WebGL.meta",
+        "unity/ShipyardViewer/Assets/Plugins/WebGL/ShipViewer.jslib",
+        "unity/ShipyardViewer/Assets/Plugins/WebGL/ShipViewer.jslib.meta",
+        "unity/ShipyardViewer/Assets/Scenes.meta",
+        "unity/ShipyardViewer/Assets/Scenes/Viewer.unity",
+        "unity/ShipyardViewer/Assets/Scenes/Viewer.unity.meta",
+        "unity/ShipyardViewer/Assets/Scripts.meta",
+        "unity/ShipyardViewer/Assets/Scripts/FleetSlot.cs",
+        "unity/ShipyardViewer/Assets/Scripts/FleetSlot.cs.meta",
+        "unity/ShipyardViewer/Assets/Scripts/ShipModel.cs",
+        "unity/ShipyardViewer/Assets/Scripts/ShipModel.cs.meta",
+        "unity/ShipyardViewer/Assets/Scripts/ShipViewer.cs",
+        "unity/ShipyardViewer/Assets/Scripts/ShipViewer.cs.meta"
+      ]
+    },
+    "T30": {
+      "state": "done",
+      "at": "2026-11-14T16:55:00+09:00",
+      "session": "ee2167d4-9b2e-4157-8281-8aac486a99ec",
+      "files_count": 20,
+      "files": [
+        "frontend/src/components/ShipViewer3D.vue",
+        "frontend/src/screens/HullDetailModal.vue",
+        "unity/ShipyardViewer/Assets/Materials/Accent.mat",
+        "unity/ShipyardViewer/Assets/Materials/Accent.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Deck.mat",
+        "unity/ShipyardViewer/Assets/Materials/Deck.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Glass.mat",
+        "unity/ShipyardViewer/Assets/Materials/Glass.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Ground.mat",
+        "unity/ShipyardViewer/Assets/Materials/Ground.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/House.mat",
+        "unity/ShipyardViewer/Assets/Materials/House.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/HullLower.mat",
+        "unity/ShipyardViewer/Assets/Materials/HullLower.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/HullUpper.mat",
+        "unity/ShipyardViewer/Assets/Materials/HullUpper.mat.meta",
+        "unity/ShipyardViewer/Assets/Materials/Steel.mat",
+        "unity/ShipyardViewer/Assets/Materials/Steel.mat.meta",
+        "unity/ShipyardViewer/Assets/Scenes/Viewer.unity",
+        "unity/ShipyardViewer/Assets/Scripts/ShipModel.cs"
+      ]
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "ts": "2026-11-14T07:49:07.674+00:00",
+  "ok": true,
+  "phases": [
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "isolation_ok": true,
+  "restored": true,
+  "results": [
+    {
+      "name": "scn-signup",
+      "phase": "P3",
+      "ref": null,
+      "file": "reports/shots/scn-signup.png",
+      "status": "pass"
+    },
+    {
+      "name": "scn-hull-create",
+      "phase": "P3",
+      "ref": null,
+      "file": "reports/shots/scn-hull-create.png",
+      "status": "pass"
+    },
+    {
+      "name": "scn-plan-drag",
+      "phase": "P3",
+      "ref": null,
+      "file": "reports/shots/scn-plan-drag.png",
+      "status": "pass",
+      "pageErrors": [
+        "TypeError: Cannot read properties of undefined (reading 'GLctx')"
+      ]
+    },
+    {
+      "name": "scn-progress-save",
+      "phase": "P3",
+      "ref": null,
+      "file": "reports/shots/scn-progress-save.png",
+      "status": "pass"
+    },
+    {
+      "name": "scn-inquiry-create",
+      "phase": "P4",
+      "ref": null,
+      "file": "reports/shots/scn-inquiry-create.png",
+      "status": "pass"
+    },
+    {
+      "name": "chat-report",
+      "phase": "P5",
+      "ref": "chat-report.png",
+      "file": "reports/shots/chat-report.png",
+      "diff": 0.0396,
+      "threshold": 0.08,
+      "sizeMatch": true,
+      "status": "ok"
+    },
+    {
+      "name": "scn-chat-feedback",
+      "phase": "P5",
+      "ref": null,
+      "file": "reports/shots/scn-chat-feedback.png",
+      "status": "pass"
+    },
+    {
+      "name": "scn-approve",
+      "phase": "P4",
+      "ref": null,
+      "file": "reports/shots/scn-approve.png",
+      "status": "pass"
+    }
+  ]
+}
